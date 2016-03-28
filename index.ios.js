@@ -8,12 +8,7 @@ var {
   Component,
   AppRegistry,
   StyleSheet,
-  Text,
-  View,
-  TouchableHighlight,
-  TextInput,
-  ListView,
-  AlertIOS
+  View
 } = React;
 import Firebase from 'firebase'
 import { connect } from 'react-redux'
