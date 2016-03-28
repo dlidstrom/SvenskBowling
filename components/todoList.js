@@ -19,7 +19,7 @@ class TodoList extends Component {
     };
   }
 
-  componentWillReceiveProps(newProps) {
+  componentWillReceiveProps(newProps, oldProps) {
     this.setState({
       todoSource: this.state.todoSource.cloneWithRows(newProps.items)
     });

@@ -30,21 +30,21 @@ class testapp extends Component {
     this.itemsRef = myFirebaseRef.child('items');
     this.state = {
       newTodo: '',
-      todoSource: new ListView.DataSource({
-        rowHasChanged: (row1, row2) => row1 !== row2
-      })
+      items: []
     };
-    this.items = [];
+  }
+
+  _childAdded(that, dataSnapshot) {
+    var newItems = that.state.items.slice();
+    newItems.push({id: dataSnapshot.key(), text: dataSnapshot.val()});
+    that.setState({
+      items: newItems
+    });
   }
 
   componentDidMount() {
     // When a todo is added
-    this.itemsRef.on('child_added', (dataSnapshot) => {
-      this.items.push({id: dataSnapshot.key(), text: dataSnapshot.val()});
-      this.setState({
-        todoSource: this.state.todoSource.cloneWithRows(this.items)
-      });
-    });
+    this.itemsRef.on('child_added', dataSnapshot => this._childAdded(this, dataSnapshot));
 
     // When a todo is removed
     this.itemsRef.on('child_removed', (dataSnapshot) => {
@@ -96,7 +96,7 @@ class testapp extends Component {
             <Text style={styles.btnText}>Add!</Text>
           </TouchableHighlight>
         </View>
-        <TodoList items={this.items} />
+        <TodoList items={this.state.items} />
       </View>
     );
   }
