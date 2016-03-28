@@ -22,6 +22,7 @@ import {
   removeTodo
 } from './actions/actions.js'
 import TodoList from './components/todoList.js'
+import Title from './components/title.js'
 
 class testapp extends Component {
   constructor(props) {
@@ -80,11 +81,7 @@ class testapp extends Component {
   render() {
     return (
       <View style={styles.appContainer}>
-        <View style={styles.titleView}>
-          <Text style={styles.titleText}>
-            My Todos
-          </Text>
-        </View>
+        <Title />
         <View style={styles.inputcontainer}>
           <TextInput style={styles.input} onChangeText={text => this.setState({newTodo: text})} value={this.state.newTodo}/>
           <TouchableHighlight
