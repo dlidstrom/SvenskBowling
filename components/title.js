@@ -11,7 +11,7 @@ class Title extends Component {
     return (
       <View style={styles.titleView}>
         <Text style={styles.titleText}>
-          My Todos
+          My Shoppinglist
         </Text>
       </View>
     );

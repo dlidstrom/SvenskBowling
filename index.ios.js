@@ -11,14 +11,14 @@ var {
   View
 } = React;
 import Firebase from 'firebase'
-import { connect } from 'react-redux'
-import {
-  addTodo,
-  removeTodo
-} from './actions/actions.js'
-import TodoList from './components/todoList.js'
-import Title from './components/title.js'
-import TodoInput from './components/todoInput.js'
+import { createStore, connect } from 'react-redux'
+import { addTodo, removeTodo } from './actions/actions.js'
+import TodoList from './components/todoList'
+import Title from './components/title'
+import TodoInput from './components/todoInput'
+import todoApp from './actions/reducers'
+
+//let store = createStore(todoApp);
 
 class testapp extends Component {
   constructor(props) {

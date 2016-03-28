@@ -29,7 +29,8 @@ class TodoInput extends Component {
         <TextInput
           style={styles.input}
           onChangeText={text => this.setState({newTodo: text})}
-          value={this.state.newTodo}/>
+          value={this.state.newTodo}
+          autoCorrect={false} />
         <TouchableHighlight
           style={styles.button}
           onPress={this.addTodo.bind(this)}

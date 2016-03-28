@@ -11,7 +11,7 @@ const removeTodo = (id) => {
   return {
     type: ActionTypes.REMOVE_TODO,
     id
-  }
+  };
 }
 
 export default {
