@@ -37,7 +37,7 @@ class TodoList extends Component {
     return (
       <TouchableHighlight
         underlayColor='#dddddd'
-        onPress={() => this.removeTodo(rowData)}>
+        onPress={() => this.props.removeTodo(rowData)}>
         <View>
           <View style={styles.row}>
             <Text style={styles.todoText}>{rowData.text.todo}</Text>

@@ -79,8 +79,11 @@ class testapp extends Component {
     return (
       <View style={styles.appContainer}>
         <Title />
-        <TodoInput addTodo={this.addTodo.bind(this)} />
-        <TodoList items={this.state.items} />
+        <TodoInput
+          addTodo={this.addTodo.bind(this)} />
+        <TodoList
+          items={this.state.items}
+          removeTodo={this.removeTodo.bind(this)} />
       </View>
     );
   }
