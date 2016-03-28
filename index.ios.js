@@ -101,19 +101,6 @@ var styles = StyleSheet.create({
   appContainer:{
     flex: 1
   },
-  titleView:{
-    backgroundColor: '#48afdb',
-    paddingTop: 30,
-    paddingBottom: 10,
-    flexDirection: 'row'
-  },
-  titleText:{
-    color: '#fff',
-    textAlign: 'center',
-    fontWeight: 'bold',
-    flex: 1,
-    fontSize: 20,
-  },
   inputcontainer: {
     marginTop: 5,
     padding: 10,
