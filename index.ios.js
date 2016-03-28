@@ -34,32 +34,30 @@ class testapp extends Component {
     };
   }
 
-  _childAdded(that, dataSnapshot) {
-    var newItems = that.state.items.slice();
-    newItems.push({id: dataSnapshot.key(), text: dataSnapshot.val()});
-    that.setState({
-      items: newItems
-    });
-  }
-
   componentDidMount() {
     // When a todo is added
-    this.itemsRef.on('child_added', dataSnapshot => this._childAdded(this, dataSnapshot));
+    this.itemsRef.on('child_added', dataSnapshot => {
+      var newItems = this.state.items.slice();
+      newItems.push({id: dataSnapshot.key(), text: dataSnapshot.val()});
+      this.setState({
+        items: newItems
+      });
+    });
 
     // When a todo is removed
-    this.itemsRef.on('child_removed', (dataSnapshot) => {
-        this.items = this.items.filter(x => x.id !== dataSnapshot.key());
-        this.setState({
-          todoSource: this.state.todoSource.cloneWithRows(this.items)
-        });
+    this.itemsRef.on('child_removed', dataSnapshot => {
+      var newItems = this.state.items.filter(x => x.id !== dataSnapshot.key());
+      this.setState({
+        items: newItems
+      });
     });
 
     // When a todo is changed
-    this.itemsRef.on('child_changed', (dataSnapshot) => {
-      this.items = this.items.filter(x => x.id !== dataSnapshot.key());
-      this.items.push({id: dataSnapshot.key(), text: dataSnapshot.val()});
+    this.itemsRef.on('child_changed', dataSnapshot => {
+      var newItems = this.state.items.filter(x => x.id !== dataSnapshot.key());
+      newItems.push({id: dataSnapshot.key(), text: dataSnapshot.val()});
       this.setState({
-        todoSource: this.state.todoSource.cloneWithRows(this.items)
+        items: newItems
       });
     });
   }
